@@ -1,0 +1,12 @@
+[package]
+name = "NumericalRecipesInRust"
+version = "0.1.0"
+authors = ["alex"]
+edition = "2018"
+
+[[bin]]
+name = "driver"
+path = "bin/driver.rs"
+
+
+[dependencies]
