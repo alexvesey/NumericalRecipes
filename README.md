@@ -1,5 +1,5 @@
 # Numerical Recipes
-## Adventues in C anbd Rust
+## Adventues in C and Rust
 
 This Repository is a playground for me to learn both ANSI C and Rust
 
