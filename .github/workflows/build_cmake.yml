@@ -91,7 +91,7 @@ jobs:
         set(ENV{PATH} "$ENV{GITHUB_WORKSPACE}${path_separator}$ENV{PATH}")
         execute_process(
           COMMAND ${{ steps.cmake.outputs.cmake_dir }}/cmake
-            -S .
+            -S in_c/.
             -B build
             -D CMAKE_BUILD_TYPE=$ENV{BUILD_TYPE}
             -D CMAKE_MAKE_PROGRAM=make
