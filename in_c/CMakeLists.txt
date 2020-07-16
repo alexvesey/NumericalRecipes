@@ -7,3 +7,8 @@ project( NumericalRecipesInC
  add_subdirectory(bin)
  add_subdirectory(lib)
  add_subdirectory(tests)
+
+ install(TARGETS Driver)
+
+ enable_testing()
+ add_test(NAME Driver COMMAND Driver)
