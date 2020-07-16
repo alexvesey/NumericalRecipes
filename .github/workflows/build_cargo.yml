@@ -3,7 +3,7 @@ name: Rust Build
 on: [push, pull_request]
 
 jobs:
-  build_and_test:
+  build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
     strategy:
@@ -37,5 +37,6 @@ jobs:
       with:
         command: build
         args: --release --all-features --manifest-path ./in_rust/Cargo.toml
+    - uses: actions-rs/cargo@v1
       with:
         command: test
