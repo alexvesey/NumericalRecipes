@@ -4,8 +4,8 @@ project( NumericalRecipesInC
 	 VERSION 0.0.1
 	 LANGUAGES C )
 
- add_subdirectory(bin)
  add_subdirectory(lib)
+ add_subdirectory(bin)
  add_subdirectory(tests)
 
  install(TARGETS Driver)
