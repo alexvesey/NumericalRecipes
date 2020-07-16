@@ -140,12 +140,12 @@ jobs:
         endif()
 
     - name: Install Strip
-      run: ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake --install build --prefix instdir --strip
+      run: ${{ steps.cmake.outputs.cmake_dir }}/cmake --install build --prefix instdir --strip
 
 
     - name: Pack
       working-directory: instdir
-      run: ${{ steps.cmake_and_ninja.outputs.cmake_dir }}/cmake -E tar cJfv ../${{ matrix.config.artifact }} .
+      run: ${{ steps.cmake.outputs.cmake_dir }}/cmake -E tar cJfv ../${{ matrix.config.artifact }} .
 
 
     - name: Upload
