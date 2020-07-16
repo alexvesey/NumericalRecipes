@@ -1,4 +1,4 @@
-name: Cargo Build Matrix
+name: Rust Build
 
 on: [push, pull_request]
 
@@ -38,6 +38,6 @@ jobs:
       with:
         toolchain: stable
     - uses: actions-rs/cargo@v1
-        with:
-          command: build
-          args: --release --all-features --manifest-path ./in_rust/Cargo.toml
+      with:
+        command: build
+        args: --release --all-features --manifest-path ./in_rust/Cargo.toml
