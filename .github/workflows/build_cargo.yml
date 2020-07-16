@@ -1,0 +1,43 @@
+name: Cargo Build Matrix
+
+on: [push, pull_request]
+
+env:
+  CMAKE_VERSION: 3.16.2
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        # TODO (Vesey, Alex) Re-enable windows builds
+        #- {
+        #    name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
+        #    os: windows-latest,
+        #  }
+        #- {
+        #    name: "Windows Latest MinGW", artifact: "Windows-MinGW.tar.xz",
+        #    os: windows-latest,
+        #  }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.tar.xz",
+            os: ubuntu-latest,
+          }
+        - {
+            name: "macOS Latest Clang", artifact: "macOS.tar.xz",
+            os: macos-latest,
+          }
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - uses: actions-rs/cargo@v1
+        with:
+          command: build
+          args: --release --all-features --manifest-path ./in_rust/Cargo.toml
