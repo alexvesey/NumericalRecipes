@@ -1,4 +1,4 @@
-![CMake Build Matrix](https://github.com/alexvesey/NumericalRecipes/workflows/CMake%20Build%20Matrix/badge.svg)
+![C Build](https://github.com/alexvesey/NumericalRecipes/workflows/C%20Build/badge.svg) ![Rusr Build](https://github.com/alexvesey/NumericalRecipes/workflows/Rust%20Build/badge.svg) 
 # Numerical Recipes
 ## Adventues in C and Rust
 
