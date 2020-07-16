@@ -1,3 +1,4 @@
+![CMake Build Matrix](https://github.com/alexvesey/NumericalRecipes/workflows/CMake%20Build%20Matrix/badge.svg)
 # Numerical Recipes
 ## Adventues in C and Rust
 
