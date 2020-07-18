@@ -1,12 +1,7 @@
 [package]
-name = "NumericalRecipesInRust"
+name = "numerical_recipes_in_rust"
 version = "0.1.0"
 authors = ["alex"]
 edition = "2018"
-
-[[bin]]
-name = "driver"
-path = "bin/driver.rs"
-
 
 [dependencies]
