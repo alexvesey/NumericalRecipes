@@ -2,7 +2,7 @@ pub mod dates {
 
   pub fn flmoon(n: f32, nph: f32, jd: &mut f32, frac: &mut f32){
     const RAD: f32 = 3.14159265/180.0;
-    let i = 0.0;
+    let mut i = 0.0;
     let (am, as_, c, t, t2, mut xtra):(f32, f32, f32, f32, f32, f32) ;
     c = n+nph/4.0;
     t=c/1236.85;
@@ -21,11 +21,11 @@ pub mod dates {
       eprintln!("nph is unknown in flmoon");
     }
     if xtra > 0.0 {
-      xtra = xtra.floor();
+      i = xtra.floor();
     }
     else{
-      xtra = xtra-1.0;
-      xtra = xtra.ceil();
+      i = xtra-1.0;
+      i = i.ceil();
     }
     *jd = *jd + i;
     *frac=xtra-i;

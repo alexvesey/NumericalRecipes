@@ -12,13 +12,13 @@ int main()
 
   int n = 1;
   int nph = 0;
-  long *jd = malloc(sizeof(long));
-  float *frac = malloc(sizeof(float));
+  long jd;
+  float frac;
 
-  flmoon(n, nph, jd, frac);
+  flmoon(n, nph, &jd, &frac);
 
   printf("flmoon test: ");
-  printf("n=%i , nph=%i, jd=%ld, frac=%lf\n",n,nph,*jd,(double)*frac);
+  printf("n=%i , nph=%i, jd=%ld, frac=%lf\n",n,nph,jd,(double)frac);
 
   return 0;
 }
