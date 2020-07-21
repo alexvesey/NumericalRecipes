@@ -1,8 +1,9 @@
 pub mod dates {
 
+  #[allow(dead_code)]
   pub fn flmoon(n: f32, nph: f32, jd: &mut f32, frac: &mut f32){
     const RAD: f32 = 3.14159265/180.0;
-    let mut i = 0.0;
+    let mut i;
     let (am, as_, c, t, t2, mut xtra):(f32, f32, f32, f32, f32, f32) ;
     c = n+nph/4.0;
     t=c/1236.85;
@@ -29,5 +30,36 @@ pub mod dates {
     }
     *jd = *jd + i;
     *frac=xtra-i;
+  }
+
+  #[allow(dead_code)]
+  pub fn julday(mm: i32, id:i32, iyyy: i32) -> i64 {
+    const IGREG: i32 = 15+31*(10+12+1582); 
+    let mut jul: i64;
+    let jm: i64;
+    let ja;
+    let mut jy = iyyy;
+
+    if jy == 0 {
+      eprintln!("julday: There is no year 0");
+    };
+    if jy < 0 {
+      jy = jy +1;
+    }
+    if mm > 2 {
+      jm=(mm+1).into();
+    }
+    else
+    {
+      jy = jy -1;
+      jm=(mm+13).into();
+    }
+    jul = ((365.25*jy as f32).floor()+(30.6001*jm as f32).floor()+(id+1720995) as f32) as i64;
+    if id+31*(mm+12*iyyy) >= IGREG
+    {
+      ja=(0.01*jy as f64) as i32;
+      jul = jul + (2-ja+(0.25*ja as f32) as i32) as i64;
+    }
+    return jul;
   }
 }

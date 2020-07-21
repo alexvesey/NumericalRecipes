@@ -1,8 +1,14 @@
 add_library(Dates
             STATIC)
 
+set(INC include/flmoon.h
+        include/julday.h) 
+
+set(SRC src/julday.c
+        src/flmoon.c)
+
 target_sources(Dates
-               PUBLIC src/flmoon.c)
+               PUBLIC ${SRC})
 
 include_directories(include)
 
@@ -13,4 +19,4 @@ target_include_directories(Dates
 target_link_libraries(Dates PUBLIC nrutils m)
 
 install(TARGETS Dates DESTINATION lib)
-install(FILES include/flmoon.h DESTINATION include)
+install(FILES ${INC} DESTINATION include)
