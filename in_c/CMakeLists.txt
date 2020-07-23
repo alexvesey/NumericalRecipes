@@ -8,7 +8,8 @@ project( NumericalRecipesInC
  add_subdirectory(bin)
  add_subdirectory(tests)
 
- install(TARGETS Driver)
+ install(TARGETS TestDriver)
+ install(TARGETS BadLuck)
 
  enable_testing()
  add_test(NAME Driver COMMAND Driver)
