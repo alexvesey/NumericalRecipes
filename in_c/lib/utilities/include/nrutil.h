@@ -7,4 +7,16 @@ void nerror(char error_text[]);
 void nerror();
 #endif
 
+static float sqrarg;
+#define SQR(a) ((sqrarg=(a)) == 0.0 ? 0.0 : sqrarg * sqrarg)
+
+static double dsqrarg;
+#define DSQR(a) ((dsqrarg=(a)) == 0.0 ? 0.0 : dsqrarg * dsqrarg)
+
+int *ivector(long nl, long nh);
+float *vector(long nl, long nh);
+
+void free_vector(float *v, long nl, long nh);
+void free_ivector(int *v, long nl, long nh);
+
 #endif
