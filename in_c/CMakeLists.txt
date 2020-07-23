@@ -12,4 +12,4 @@ project( NumericalRecipesInC
  install(TARGETS BadLuck)
 
  enable_testing()
- add_test(NAME Driver COMMAND Driver)
+ add_test(NAME TestDriver COMMAND TestDriver)
