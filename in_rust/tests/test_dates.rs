@@ -27,3 +27,19 @@ fn julday_test(){
     }
     
 }
+
+#[test]
+fn caldat_test(){
+    let (mm,id,iyyy) = (5,23,1968);
+    let calculated_julday = dates::dates::julday(mm,id,iyyy);
+    let (mut mm2,mut id2,mut iyyy2) = (0,0,0);
+    dates::dates::caldat(calculated_julday, &mut mm2, &mut id2, &mut iyyy2);
+
+    print!("caldat test: ");
+    if mm == mm2 && id == id2 && iyyy == iyyy2 {
+      println!("Passed");
+    }
+    else{
+      println!("Failed. Expected {}/{}/{} but got {}/{}/{}",mm,id,iyyy,mm2,id2,iyyy2);
+    }
+}

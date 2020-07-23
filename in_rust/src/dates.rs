@@ -62,4 +62,38 @@ pub mod dates {
     }
     return jul;
   }
+
+  #[allow(dead_code)]
+  pub fn caldat(julian: i64, mm: &mut i32, id: &mut i32, iyyy: &mut i32) {
+  const CALIGREG: i64 = 2299161;
+  let (ja,jalpha,jb,jc,jd,je);
+  if julian >= CALIGREG{
+    jalpha= (((julian-1867216) as f64 -0.25)/36524.25) as i64;
+    ja=julian+1+jalpha-(0.25*jalpha as f64) as i64;
+  }
+  else
+  {
+    ja=julian;
+  }
+  jb =ja+1524;
+  jc =(6680.0+((jb-2439870) as f32 -122.1)/365.25) as i64;
+  jd =(365*jc+(0.25*jc as f64) as i64 ) as i64;
+  je =((jb-jd) as f64/30.6001) as i64;
+  *id=(jb-jd-((30.6001*je as f64) as i64)) as i32;
+  *mm=(je-1) as i32;
+  if *mm > 12
+  {
+    *mm -= 12;
+  }
+  *iyyy=(jc-4715) as i32;
+  if *mm > 2
+  {
+    *iyyy=*iyyy -1;
+  }
+  if *iyyy <= 0
+  {
+    *iyyy=*iyyy -1;
+  }
+  
+}
 }
