@@ -6,7 +6,6 @@ project( NumericalRecipesInC
 
  add_subdirectory(lib)
  add_subdirectory(bin)
- add_subdirectory(tests)
 
  install(TARGETS TestDriver)
  install(TARGETS BadLuck)

@@ -1,8 +1,12 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <flmoon.h>
-#include <julday.h>
+#include "nrutil.h"
+#include "flmoon.h"
+#include "julday.h"
+#include "gauss_jordan.h"
+
+int testLinearAlgebra(void);
 
 int main()
 {
@@ -54,6 +58,37 @@ int main()
     printf("Caldat Test Failed. Expected %d/%d/%d but got %d/%d/%d\n",mm,id,iyyy,mm_in,id_in,iyyy_in);
     exit_code++;
   }
+
+  exit_code = testLinearAlgebra();
+
+  if(exit_code == 0)
+  {
+    printf("Linear Algebra Tests Passed\n");
+  }
+
+  return exit_code;
+}
+
+int testLinearAlgebra(void)
+{
+  int exit_code = 0;
+  int n = 3;
+  int m = 1;
+  float **a = matrix(1,n,1,n);
+  a[1][1] = 1; a[1][2]=  1;a[1][3] = -1;
+  a[2][1] = 1; a[2][2]= -1;a[2][3] =  2;
+  a[3][1] = 2; a[3][2]=1;a[3][3] = 1;
+
+  float **x = matrix(1,n,1,m);
+  x[1][1] = 7; x[2][1] = 3; x[3][1] = 9; 
+
+  gaussj(a,n,x,m);
+
+  assert(6.0 == x[1][1]);
+  assert(-1.0 == x[2][1]);
+  assert(-2.0 == x[3][1]); 
+
+  printf("Solution to gauss jordan example: %f,%f,%f\n", x[1][1], x[2][1], x[3][1]);
 
   return exit_code;
 }

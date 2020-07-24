@@ -39,3 +39,36 @@ void free_ivector(int *v, long nl, long nh)
 {
   free((FREE_ARG) (v+nl-NR_END));
 }
+
+float **matrix(long nrl, long nrh, long ncl, long nch)
+{
+  long i, nrow=nrh-nrl+1,ncol=nch-ncl+1;
+  float **m;
+ 
+  m = (float **) malloc((size_t)((nrow+NR_END)*sizeof(float*)));
+  if(!m)
+  {
+    nerror("allocation failure 1 in matrix()");
+  }
+  m += NR_END;
+  m -= nrl;
+  
+  m[nrl]=(float *) malloc((size_t)((nrow*ncol+NR_END)*sizeof(float)));
+  if(!m[nrl])
+  {
+    nerror("allocation failure 2 in matrix()");
+  }
+  m[nrl] += NR_END;
+  m[nrl] -= ncl;
+
+  for(i=nrl+1; i<=nrh;i++)
+  {
+    m[i] = m[i-1]+ncol;
+  }
+ 
+  return m;
+}
+double **dmatrix(long nrl, long nrh, long ncl, long nch)
+{
+
+}

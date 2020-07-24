@@ -19,4 +19,7 @@ float *vector(long nl, long nh);
 void free_vector(float *v, long nl, long nh);
 void free_ivector(int *v, long nl, long nh);
 
+float **matrix(long nrl, long nrh, long ncl, long nch);
+double **dmatrix(long nrl, long nrh, long ncl, long nch);
+
 #endif
